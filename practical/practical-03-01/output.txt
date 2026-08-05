@@ -1,0 +1,16 @@
+Before fork()
+Current Process ID (PID): 1216
+
+----- Child Process -----
+Child PID  : 1217
+Parent PID : 1216
+Child is sleeping for 5 seconds...
+Child Process Finished.
+Before fork()
+Current Process ID (PID): 1216
+
+----- Parent Process -----
+Parent PID : 1216
+Child PID  : 1217
+Parent is sleeping for 10 seconds...
+Parent Process Finished.
