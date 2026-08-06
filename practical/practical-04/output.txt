@@ -1,0 +1,17 @@
+Child 1 Started
+PID  : 1159
+PPID : 1158
+Child 1 Finished
+
+Child 2 Started
+PID  : 1160
+PPID : 1158
+Child 2 Finished
+
+Parent Waiting using wait()...
+One child has terminated.
+
+Parent Waiting for Child 2 using waitpid()...
+Child 2 has terminated.
+
+Parent Process Finished.
