@@ -1,0 +1,11 @@
+Shellforge> hello
+Command entered: hello
+
+Shellforge> ls
+Command entered: ls
+
+Shellforge> test
+Command entered: test
+
+Shellforge> exit
+Exiting Shellforge...

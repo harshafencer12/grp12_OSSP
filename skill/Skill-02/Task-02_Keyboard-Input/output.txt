@@ -1,0 +1,15 @@
+Shellforge> hello
+Command entered: hello
+
+Shellforge> testing
+Command entered: testing
+
+Backspace Test:
+Shellforge> helo
+After pressing Backspace and entering l:
+hello
+
+Command entered: hello
+
+Shellforge> exit
+Exiting Shellforge...
