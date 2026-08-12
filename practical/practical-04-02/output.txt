@@ -1,0 +1,169 @@
+PRACTICAL-04 SECOND PART
+ZOMBIE PROCESS EXPERIMENT
+========================================
+
+OBJECTIVE
+
+To create a zombie process, investigate the process table,
+and eliminate the zombie process using proper synchronization
+techniques.
+
+
+PART 1: CREATING A ZOMBIE PROCESS
+========================================
+
+Program:
+zombie.c
+
+Compilation Command:
+
+gcc zombie.c -o zombie
+
+
+Execution Command:
+
+./zombie
+
+
+The child process was created using fork().
+
+The child process terminated using exit(0), while the parent
+process continued running for 120 seconds.
+
+The parent did not call wait() or waitpid(), so the terminated
+child remained in the process table as a zombie.
+
+
+PROCESS TABLE INVESTIGATION
+========================================
+
+Command:
+
+ps -p 599 -o pid,ppid,state,cmd
+
+
+Output:
+
+    PID    PPID S CMD
+    599     598 Z [zombie] <defunct>
+
+
+OBSERVATION
+
+PID 599 is the child process.
+
+PID 598 is the parent process.
+
+The state Z indicates that the child process is a zombie.
+
+The <defunct> status indicates that the child process has
+terminated but the parent has not yet collected its exit status.
+
+Therefore, a zombie process was successfully created and
+observed.
+
+
+PART 2: ELIMINATING THE ZOMBIE PROCESS
+========================================
+
+Program:
+zombie_fixed.c
+
+Compilation Command:
+
+gcc zombie_fixed.c -o zombie_fixed
+
+
+Execution Command:
+
+./zombie_fixed
+
+
+Output:
+
+Parent process:
+PID = [actual parent PID]
+Child PID = [actual child PID]
+Parent waiting for child...
+
+Child process:
+PID = [actual child PID]
+PPID = [actual parent PID]
+Child exiting...
+
+Child has been successfully reaped.
+Parent exiting.
+
+
+SYNCHRONIZATION USED
+========================================
+
+The parent process uses waitpid() to wait for the child:
+
+waitpid(pid, &status, 0);
+
+The waitpid() system call allows the parent to collect the
+child's termination status and properly reap the child process.
+
+
+VERIFICATION OF FIXED PROGRAM
+========================================
+
+Command:
+
+ps -o pid,ppid,state,cmd | grep '[z]ombie_fixed'
+
+
+Result:
+
+No zombie_fixed process remained after the child process
+was reaped.
+
+
+COMPARISON
+========================================
+
+zombie.c:
+
+Child terminates
+        |
+        v
+Parent does not call wait()
+        |
+        v
+Child becomes a zombie
+        |
+        v
+ps shows state Z
+
+
+zombie_fixed.c:
+
+Child terminates
+        |
+        v
+Parent calls waitpid()
+        |
+        v
+Child is reaped
+        |
+        v
+No zombie remains
+
+
+CONCLUSION
+========================================
+
+A zombie process was successfully created by allowing a child
+process to terminate without the parent collecting its exit
+status.
+
+The zombie process was identified using the ps command. Its
+state was shown as Z and it appeared as <defunct>.
+
+The program was then modified to use waitpid(). The parent
+properly synchronized with the child and collected its
+termination status.
+
+Therefore, the zombie process was successfully eliminated
+using proper parent-child synchronization.
