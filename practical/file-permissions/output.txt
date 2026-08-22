@@ -1,0 +1,177 @@
+FILE PERMISSIONS USING UNIX COMMANDS
+====================================
+
+OBJECTIVE
+
+To create a text file using a C program and demonstrate
+how to view and modify file permissions using Unix commands
+and chmod.
+
+
+1. COMPILATION
+--------------
+
+Command:
+
+gcc file_permission.c -o file_permission
+
+
+2. EXECUTION
+------------
+
+Command:
+
+./file_permission
+
+Output:
+
+File created successfully.
+
+
+3. CHECKING FILE PERMISSIONS
+----------------------------
+
+Command:
+
+ls -l sample.txt
+
+The permissions are displayed in the following format:
+
+-rw-r--r--
+
+Meaning:
+
+User/Owner -> Read + Write
+Group      -> Read
+Others     -> Read
+
+
+4. USER PERMISSIONS
+-------------------
+
+The user/owner is represented by 'u'.
+
+Command to add read permission:
+
+chmod u+r sample.txt
+
+Command to add write permission:
+
+chmod u+w sample.txt
+
+Command to add both read and write permissions:
+
+chmod u+rw sample.txt
+
+Command to remove read permission:
+
+chmod u-r sample.txt
+
+Command to remove write permission:
+
+chmod u-w sample.txt
+
+
+5. GROUP PERMISSIONS
+--------------------
+
+The group is represented by 'g'.
+
+Command to add read permission:
+
+chmod g+r sample.txt
+
+Command to add write permission:
+
+chmod g+w sample.txt
+
+Command to add both read and write permissions:
+
+chmod g+rw sample.txt
+
+Command to remove read permission:
+
+chmod g-r sample.txt
+
+Command to remove write permission:
+
+chmod g-w sample.txt
+
+
+6. OTHER USERS' PERMISSIONS
+---------------------------
+
+Other users are represented by 'o'.
+
+Command to add read permission:
+
+chmod o+r sample.txt
+
+Command to add write permission:
+
+chmod o+w sample.txt
+
+Command to add both read and write permissions:
+
+chmod o+rw sample.txt
+
+
+7. PERMISSIONS FOR ALL USERS
+----------------------------
+
+The symbol 'a' represents all users.
+
+Command:
+
+chmod a+rw sample.txt
+
+This gives read and write permissions to:
+
+User/Owner
+Group
+Others
+
+
+8. VERIFYING PERMISSIONS
+------------------------
+
+Command:
+
+ls -l sample.txt
+
+Example:
+
+-rw-rw-r--
+
+Meaning:
+
+User/Owner -> Read + Write
+Group      -> Read + Write
+Others     -> Read
+
+
+9. READING THE FILE
+-------------------
+
+Command:
+
+cat sample.txt
+
+Output:
+
+Hello, this is a test file.
+
+
+CONCLUSION
+----------
+
+The C program successfully created the sample text file.
+
+The ls -l command was used to view the file permissions.
+
+The chmod command was used to add and remove read and
+write permissions for the user, group, and other users.
+
+Therefore, Unix file permissions were successfully
+demonstrated using chmod.
+
