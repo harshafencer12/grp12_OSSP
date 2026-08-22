@@ -1,0 +1,130 @@
+PRACTICAL-05
+INTER-PROCESS COMMUNICATION USING PIPES
+========================================
+
+
+PART 1: PRODUCER-CONSUMER USING ANONYMOUS PIPE
+===============================================
+
+Compilation:
+
+gcc producer_consumer.c -o producer_consumer
+
+
+Execution:
+
+./producer_consumer
+
+
+Output:
+
+Producer (Parent): Generating data...
+Produced: 10 | Communication time: 2 clock ticks
+Produced: 20 | Communication time: 1 clock ticks
+Produced: 30 | Communication time: 1 clock ticks
+Produced: 40 | Communication time: 1 clock ticks
+Produced: 50 | Communication time: 1 clock ticks
+Consumer (Child): Waiting for data...
+Consumed: 10
+Consumed: 20
+Consumed: 30
+Consumed: 40
+Consumed: 50
+Consumer: Finished.
+Producer: Finished.
+
+
+OBSERVATION:
+
+The parent process acts as the producer and writes data
+into the anonymous pipe.
+
+The child process acts as the consumer and reads the data
+from the pipe.
+
+The communication time was measured using clock ticks.
+The exact values may vary depending on system load.
+
+
+COMMUNICATION FLOW:
+
+Parent
+   |
+   | write()
+   v
+Pipe
+   |
+   | read()
+   v
+Child
+
+
+PART 2: ls -l | grep ".c"
+==========================
+
+Compilation:
+
+gcc pipe_ls_grep.c -o pipe_ls_grep
+
+
+Execution:
+
+./pipe_ls_grep
+
+
+Output:
+
+-rw-r--r-- 1 root root ... pipe_ls_grep.c
+-rw-r--r-- 1 root root ... producer_consumer.c
+Pipeline execution completed.
+
+
+OBSERVATION:
+
+The first child process executes ls -l.
+
+Its standard output is redirected to the pipe using dup2().
+
+The second child process executes grep ".c".
+
+Its standard input is redirected from the pipe using dup2().
+
+The parent waits for both child processes using waitpid().
+
+
+SYSTEM CALLS USED:
+
+fork()  - Creates child processes.
+pipe()  - Creates an anonymous pipe.
+dup2()  - Redirects standard input/output.
+exec()  - Executes ls and grep.
+waitpid() - Waits for child processes.
+
+
+PIPELINE:
+
+ls -l
+  |
+  | pipe
+  v
+grep ".c"
+  |
+  v
+Output
+
+
+CONCLUSION:
+
+Both inter-process communication experiments were
+successfully implemented using Linux system calls.
+
+The producer-consumer program demonstrated communication
+between parent and child processes using an anonymous pipe.
+
+The second program successfully implemented the equivalent
+of the shell command:
+
+ls -l | grep ".c"
+
+using fork(), pipe(), dup2(), and exec().
+
