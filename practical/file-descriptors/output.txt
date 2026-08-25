@@ -1,0 +1,157 @@
+FILE DESCRIPTORS PRACTICAL
+==========================
+
+PROGRAM 1: STDOUT
+-----------------
+
+Compilation:
+gcc stdout.c -o stdout
+
+Execution:
+./stdout
+
+Output:
+Hello World
+
+
+PROGRAM 2: STDIN
+----------------
+
+Compilation:
+gcc stdin.c -o stdin
+
+Execution:
+./stdin
+
+Sample Input:
+Hello
+
+Sample Output:
+Hello
+
+
+PROGRAM 3: STDIN + STDOUT
+-------------------------
+
+Compilation:
+gcc stdin_stdout.c -o stdin_stdout
+
+Execution:
+./stdin_stdout
+
+Sample Input:
+Hello Linux
+
+Output:
+Enter something: Hello Linux
+Hello Linux
+
+
+PROGRAM 4: STDERR
+-----------------
+
+Compilation:
+gcc stderr.c -o stderr
+
+Execution:
+./stderr
+
+Output:
+This is an error
+
+
+PROGRAM 5: ACTUAL ERROR USING STDERR
+-------------------------------------
+
+Compilation:
+gcc error.c -o error
+
+Execution:
+./error
+
+Output:
+open: No such file or directory
+
+
+PROGRAM 6: CREATE FILE USING FILE DESCRIPTOR
+---------------------------------------------
+
+Compilation:
+gcc create.c -o create
+
+Execution:
+./create
+
+Output:
+File created successfully!
+File descriptor = 3
+
+
+PROGRAM 7: O_TRUNC
+------------------
+
+Compilation:
+gcc truncate.c -o truncate
+
+Execution:
+./truncate
+
+Output:
+New Data
+
+
+PROGRAM 8: DUP
+--------------
+
+Compilation:
+gcc dup.c -o dup
+
+Execution:
+./dup
+
+Output:
+fd1 = 3
+fd2 = 4
+
+
+STANDARD FILE DESCRIPTORS
+=========================
+
+0 -> STDIN_FILENO  -> Standard Input
+1 -> STDOUT_FILENO -> Standard Output
+2 -> STDERR_FILENO -> Standard Error
+
+
+IMPORTANT OBSERVATIONS
+======================
+
+A file descriptor is an integer assigned by the operating
+system to an opened file or I/O resource.
+
+The lowest available file descriptor is generally assigned
+when a resource is opened.
+
+open() returns a file descriptor.
+
+read() reads data using a file descriptor.
+
+write() writes data using a file descriptor.
+
+close() closes a file descriptor.
+
+dup() creates another file descriptor referring to the same
+underlying open file.
+
+O_CREAT creates a file if it does not already exist.
+
+O_WRONLY opens a file for writing.
+
+O_TRUNC removes the existing contents of a file when it is
+opened for writing.
+
+CONCLUSION
+==========
+
+The programs demonstrate standard file descriptors,
+file creation, reading, writing, error handling, truncation,
+and duplication of file descriptors.
