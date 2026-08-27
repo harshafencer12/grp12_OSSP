@@ -1,0 +1,88 @@
+SCHEDULING ALGORITHMS PRACTICAL
+================================
+
+1. FCFS SCHEDULING
+------------------
+
+Command:
+./fcfs
+
+Input:
+Number of processes: 3
+P1: 5
+P2: 3
+P3: 8
+
+Output:
+
+Process BT      WT      TAT
+P1      5       0       5
+P2      3       5       8
+P3      8       8       16
+
+
+2. SJF NON-PREEMPTIVE
+---------------------
+
+Command:
+./sjf_nonpreemptive
+
+Input:
+Number of processes: 3
+P1: 8
+P2: 3
+P3: 5
+
+Output:
+
+Process BT      WT      TAT
+P1      3       0       3
+P2      5       3       8
+P3      8       8       16
+
+
+3. PRIORITY SCHEDULING
+----------------------
+
+Command:
+./priority
+
+Input:
+Number of processes: 3
+
+P1 Burst Time: 5
+P1 Priority: 2
+
+P2 Burst Time: 3
+P2 Priority: 1
+
+P3 Burst Time: 8
+P3 Priority: 3
+
+Output:
+
+Process BT      Priority        WT      TAT
+P1      3       1               0       3
+P2      5       2               3       8
+P3      8       3               8       16
+
+
+4. ROUND ROBIN
+--------------
+
+Command:
+./round_robin
+
+Input:
+Number of processes: 3
+P1: 5
+P2: 4
+P3: 2
+Time Quantum: 2
+
+Output:
+
+Process BT      WT      TAT
+P1      5       6       11
+P2      4       6       10
+P3      2       4       6
