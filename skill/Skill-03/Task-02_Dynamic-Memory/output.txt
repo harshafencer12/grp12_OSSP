@@ -1,0 +1,64 @@
+SKILL-03 TASK-02: DYNAMIC MEMORY MANAGEMENT
+===========================================
+
+Compilation:
+gcc -Wall -Wextra -g dynamic_memory.c -o dynamic_memory
+
+Execution:
+./dynamic_memory
+
+Output:
+
+Dynamic Memory Management Demonstration
+========================================
+
+Dynamic Array:
+Added: 10
+Added: 20
+Buffer resized to 4 elements
+Added: 30
+Added: 40
+Buffer resized to 8 elements
+Added: 50
+Array contents: 10 20 30 40 50
+
+Linked List:
+Added node: 100
+Added node: 200
+Added node: 300
+List contents: 300 200 100
+Linked list memory released successfully.
+
+All dynamically allocated memory was released.
+
+
+VALGRIND VERIFICATION
+=====================
+
+Command:
+
+valgrind --leak-check=full ./dynamic_memory
+
+Important result:
+
+All heap blocks were freed -- no leaks are possible.
+
+ERROR SUMMARY: 0 errors from 0 contexts
+
+
+OBSERVATION
+===========
+
+The program dynamically allocates memory using malloc().
+
+realloc() is used to resize the dynamic array when the
+allocated capacity becomes full.
+
+The array size is increased when more elements are required.
+
+A linked list is created using dynamically allocated nodes.
+
+Each node is released using free() after use.
+
+Valgrind is used to verify that dynamically allocated memory
+has been released correctly.
