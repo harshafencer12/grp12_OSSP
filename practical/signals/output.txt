@@ -1,0 +1,107 @@
+PRACTICAL - SIGNALS
+===================
+
+PROGRAM 1 - SIGINT WITH HANDLER
+--------------------------------
+
+Command:
+./signal1
+
+Output:
+
+Program is running...
+Program is running...
+Program is running...
+
+After pressing Ctrl+C:
+
+SIGINT received!
+
+
+PROGRAM 2 - SIGINT WITHOUT HANDLER
+-----------------------------------
+
+Command:
+./signal2
+
+Output:
+
+Program is running...
+Program is running...
+
+After pressing Ctrl+C:
+
+The program terminates.
+
+
+PROGRAM 3 - SIGCHLD
+-------------------
+
+Command:
+./signal3
+
+Output:
+
+Parent is waiting...
+Child is running...
+Child is terminating...
+SIGCHLD received: Child has terminated.
+Parent finished.
+
+Note: The order of messages may vary.
+
+
+PROGRAM 4 - SIGPIPE
+-------------------
+
+Command:
+./signal4
+
+Output:
+
+Writing to pipe...
+
+The process terminates because the write operation generates
+SIGPIPE after the read end of the pipe is closed.
+
+
+PROGRAM 5 - kill() AND SIGUSR1
+------------------------------
+
+Command:
+./signal5
+
+Output:
+
+Child waiting...
+Parent sending signal...
+Child received SIGUSR1
+
+
+PROGRAM 6 - SIGABRT
+-------------------
+
+Command:
+./signal6
+
+Output:
+
+Program started
+Aborted
+
+The statement "Program ended" is not executed.
+
+
+PROGRAM 7 - SIGSEGV
+-------------------
+
+Command:
+./signal7
+
+Output:
+
+Before error
+Segmentation fault
+
+The program terminates because it attempts to access invalid
+memory through a NULL pointer.
