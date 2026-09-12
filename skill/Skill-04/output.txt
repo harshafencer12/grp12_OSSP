@@ -1,0 +1,157 @@
+============================================
+             SKILL 04 OUTPUT
+============================================
+
+Compilation:
+
+gcc -Wall -Wextra -g skill04.c -o skill04
+
+Execution:
+
+./skill04
+
+
+TEST 1: Normal command
+
+Input:
+ls -l
+
+Output:
+
+========== TOKEN DEBUG OUTPUT ==========
+Token 1: WORD               Value: "ls"
+Token 2: WORD               Value: "-l"
+Token 3: END               Value: "END"
+========================================
+
+Token stream is valid.
+
+========== PARSE TREE ==========
+|-- COMMAND
+  |-- COMMAND_SEGMENT
+    |-- ls
+    |-- -l
+================================
+
+======= EXECUTION STRUCTURE =======
+Command: ls
+Arguments: [ls] [-l]
+Input file: NONE
+Output file: NONE
+Append mode: NO
+===================================
+
+Parsing completed successfully.
+
+
+TEST 2: Pipeline
+
+Input:
+cat file.txt | grep hello
+
+Tokens:
+
+WORD               cat
+WORD               file.txt
+PIPE               |
+WORD               grep
+WORD               hello
+END                END
+
+Token stream is valid.
+
+Parse tree generated successfully.
+
+Two command segments were identified.
+
+
+TEST 3: Input and output redirection
+
+Input:
+cat < input.txt > output.txt
+
+Tokens:
+
+WORD               cat
+INPUT_REDIRECT     <
+WORD               input.txt
+OUTPUT_REDIRECT    >
+WORD               output.txt
+END                END
+
+Execution structure:
+
+Command: cat
+Arguments: [cat]
+Input file: input.txt
+Output file: output.txt
+Append mode: NO
+
+
+TEST 4: Append redirection
+
+Input:
+ls -l >> output.txt
+
+Tokens:
+
+WORD               ls
+WORD               -l
+APPEND_REDIRECT    >>
+WORD               output.txt
+END                END
+
+Execution structure:
+
+Command: ls
+Arguments: [ls] [-l]
+Output file: output.txt
+Append mode: YES
+
+
+TEST 5: Empty command
+
+Input:
+[Press Enter]
+
+Output:
+
+Empty command: nothing to parse.
+
+
+TEST 6: Syntax error
+
+Input:
+| ls
+
+Output:
+
+Syntax Error: Invalid pipe placement.
+Parsing failed due to syntax error.
+
+
+TEST 7: Syntax error
+
+Input:
+ls |
+
+Output:
+
+Syntax Error: Command expected after pipe.
+Parsing failed due to syntax error.
+
+
+TEST 8: Syntax error
+
+Input:
+ls >
+
+Output:
+
+Syntax Error: Redirection requires a file.
+Parsing failed due to syntax error.
+
+
+============================================
+              TEST COMPLETED
+============================================
