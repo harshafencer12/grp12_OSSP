@@ -1,0 +1,80 @@
+PRACTICAL 06 - OUTPUT
+=====================
+
+PART 1 - NAMED PIPE CLIENT-SERVER
+
+SERVER OUTPUT
+-------------
+
+=====================================
+       FIFO SERVER STARTED
+=====================================
+Waiting for client messages...
+Press Ctrl+C to stop the server.
+
+Received from Client PID 1234: Hello Server
+Received from Client PID 1250: Hello from Client 1
+Received from Client PID 1260: Hello from Client 2
+
+
+CLIENT OUTPUT
+-------------
+
+=====================================
+           FIFO CLIENT
+=====================================
+
+Enter message: Hello Server
+Message sent to server.
+Waiting for response...
+Server Response: Server processed your message: Hello Server
+
+
+MULTIPLE CLIENT ANALYSIS
+------------------------
+
+Multiple clients sent messages to the common request FIFO.
+
+The server received and processed requests sequentially.
+
+Each client received its response through a separate FIFO created
+using its Process ID.
+
+
+PART 2 - POSIX SIGNAL HANDLING
+
+========================================
+      POSIX SIGNAL HANDLING PROGRAM
+========================================
+
+Process PID: 1500
+
+Press Ctrl+C to send SIGINT.
+Use another terminal for SIGUSR1:
+kill -USR1 1500
+
+Use another terminal for SIGTERM:
+kill -TERM 1500
+
+Program is running...
+
+After pressing Ctrl+C:
+
+[HANDLER] SIGINT received - Ctrl+C pressed.
+
+After executing:
+
+kill -USR1 1500
+
+Output:
+
+[HANDLER] SIGUSR1 received - custom user signal.
+
+After executing:
+
+kill -TERM 1500
+
+Output:
+
+[HANDLER] SIGTERM received - terminating program.
+Program terminated safely.
