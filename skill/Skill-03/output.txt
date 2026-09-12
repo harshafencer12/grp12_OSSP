@@ -1,0 +1,73 @@
+============================================
+             SKILL 03 OUTPUT
+============================================
+
+Compilation:
+gcc -Wall -Wextra -g skill03.c -o skill03
+
+Execution:
+./skill03
+
+Sample execution:
+
+============================================
+             SKILL 03 DEMONSTRATION
+============================================
+
+Features implemented:
+1. Escape sequence handling
+2. Command history
+3. Previous command navigation
+4. Next command navigation
+5. Dynamic input buffer
+6. Automatic buffer resizing
+7. Backspace handling
+8. Linked list memory management
+9. Memory release using free()
+
+Controls:
+UP ARROW    -> Previous command
+DOWN ARROW  -> Next command
+BACKSPACE   -> Delete character
+ENTER       -> Execute/store command
+Ctrl+D      -> Exit
+Type 'history' to display command history.
+
+skill03> hello
+Command executed: hello
+
+skill03> ls
+Command executed: ls
+
+skill03> pwd
+Command executed: pwd
+
+skill03> history
+
+========== COMMAND HISTORY ==========
+1  hello
+2  ls
+3  pwd
+4  history
+=====================================
+
+UP ARROW successfully recalled previous commands.
+
+DOWN ARROW successfully navigated to newer commands.
+
+BACKSPACE successfully removed characters from the input buffer.
+
+Long input successfully caused the dynamic buffer to resize
+using realloc().
+
+Valgrind command:
+valgrind --leak-check=full --show-leak-kinds=all ./skill03
+
+Expected Valgrind result:
+
+All heap blocks were freed -- no leaks are possible
+ERROR SUMMARY: 0 errors from 0 contexts
+
+============================================
+             TEST COMPLETED
+============================================
