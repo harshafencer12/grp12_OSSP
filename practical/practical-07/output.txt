@@ -1,0 +1,112 @@
+============================================
+          PRACTICAL 07 OUTPUT
+============================================
+
+PART 1: PROCESS MEMORY LAYOUT
+
+Compilation:
+
+gcc -Wall -Wextra -g memory_layout.c -o memory_layout
+
+Execution:
+
+./memory_layout
+
+
+Sample Output:
+
+============================================
+       LINUX PROCESS MEMORY LAYOUT
+============================================
+Process PID              : 12345
+
+Memory Addresses:
+--------------------------------------------
+Code (function)          : 0x55XXXXXXXX
+Global variable          : 0x55XXXXXXXX
+Static global variable   : 0x55XXXXXXXX
+Static local variable    : 0x55XXXXXXXX
+Heap variable            : 0x55XXXXXXXX
+Stack variable           : 0x7ffXXXXXXXXX
+--------------------------------------------
+
+Memory Segment Analysis:
+Code   -> Contains program instructions.
+Global -> Stores global variables.
+Static -> Stores static variables.
+Heap   -> Dynamically allocated memory.
+Stack  -> Stores local variables and function data.
+
+Heap value  : 500
+Stack value : 300
+
+
+PART 2: /proc/PID/maps
+
+Command used:
+
+cat /proc/12345/maps
+
+The output showed mappings for:
+
+- Executable program
+- Code/text segment
+- Data segment
+- Heap
+- Shared libraries
+- Stack
+- VDSO
+- VVAR
+
+
+Important examples:
+
+r-xp -> Read and execute
+rw-p -> Read and write
+[heap] -> Heap memory
+[stack] -> Stack memory
+[vdso] -> Virtual Dynamic Shared Object
+
+
+PART 3: PMAP ANALYSIS
+
+Command:
+
+pmap 12345
+
+Extended command:
+
+pmap -x 12345
+
+The output displayed virtual memory regions and memory usage.
+
+Observed mappings included:
+
+- Program executable
+- Shared libraries
+- Heap
+- Stack
+- Anonymous mappings
+
+
+PART 4: MEMORY MAP PROGRAM
+
+Compilation:
+
+gcc -Wall -Wextra -g memory_maps.c -o memory_maps
+
+Execution:
+
+./memory_maps
+
+The program successfully opened:
+
+/proc/<PID>/maps
+
+and displayed the virtual memory mappings of the running process.
+
+
+============================================
+              PRACTICAL COMPLETED
+============================================
+
